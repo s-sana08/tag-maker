@@ -6,6 +6,12 @@
 
 ---
 
+## 🌐 Live Demo
+
+https://s-sana08.github.io/tag-maker/
+
+---
+
 ## ✨ Features
 
 * 🔹 Generate `<ul>` and `<ol>` lists
@@ -29,7 +35,7 @@
    ```
    index.html
    ```
-3. Enter input and click **Convert**
+3. Enter your input and click **Convert**
 4. Copy the generated output
 
 ---
