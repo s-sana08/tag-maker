@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png"  sizes="20x20" href="https://resources.enterprisetalk.com/ebook/cat-icon.png">
+   
+    <title>Tag Maker</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+
+
+<style>
+  #heading {
+    text-align:center;
+    font-size: 20px;    
+     color: #010102;
+  }
+  .card{
+    box-shadow:5px 6px 16px -9px;
+    background: #f2f0f0;
+  }
+  .card-title{
+   
+    font-size: 20px; 
+    font-weight: 300px; 
+  }
+
+</style>
+
+</head>
+<body>
+
+<h1 class='text-center' style="margin-top: 10px; margin-bottom: -16px;">Tag Maker</h1><br>
+<div class="container card" style="margin-bottom: 10px;">
+
+   <div class="card-body">
+        <input type="button" value='Converter' class="btn btn-default mb-2 " id="btnConverter" >
+        <input type="button" value='Option' class="btn btn-default mb-2 " id="btnOpt" >
+        <input type="button" value='ul List' class="btn btn-default mb-2 " id="btnlist" >
+        <input type="button" value='ol List' class="btn btn-default mb-2 " id="btnollist" >
+        <input type="button" value='Sort' class="btn btn-default mb-2 " id="btnsort" >
+        <input type="button" value='URL' class="btn btn-default mb-2 " id="btnURL" >
+      
+        <br><br>
+        <!-- ul list maker -->
+         <div id="divListmkr">
+
+            <div class="row">
+                <div class="card-title">ul List Tag Maker</div><hr>
+                <div class="col-5">
+                    <label for="" id=""> Enter List</label>
+                    <textarea name="txtEnterList" id="txtEnterList" cols="30" class="form-control" rows="10"></textarea> <br>
+                    <input type="button" value="Convert" class='btn btn-success mb-2' onclick="GenerateList();">
+                </div>
+                        
+                <div class="col-7">
+                    <label id=""> Result</label>
+                    <textarea name="txtResult" id="txtResult" class="form-control" cols="30" rows="10" readonly></textarea><br>
+                    <input type="button" value='Copy List' class="btn btn-success mb-2 " id="copyButton1" >
+                    <input type="button" value='Refresh' class="btn btn-primary mb-2 "  onclick="Refresh();" >
+                </div>
+            </div> 
+
+        </div>
+
+         <!-- ol list maker -->
+         <div id="divolListmkr">
+
+            <div class="row">
+                <div class="card-title">ol List Tag Maker</div><hr>
+                <div class="col-5">
+                    <label for="" id=""> Enter List</label>
+                    <textarea name="txtEnterolList" id="txtEnterolList" cols="30" class="form-control" rows="10"></textarea> <br>
+                    <input type="button" value="Convert" class='btn btn-success mb-2' onclick="GenerateolList();">
+                </div>
+                        
+                <div class="col-7">
+                    <label id=""> Result</label>
+                    <textarea name="txtolResult" id="txtolResult" class="form-control" cols="30" rows="10" readonly></textarea><br>
+                    <input type="button" value='Copy List' class="btn btn-success mb-2 " id="copyolButton" >
+                    <input type="button" value='Refresh' class="btn btn-primary mb-2 "  onclick="RefresholList();" >
+                </div>
+            </div> 
+
+        </div>
+
+
+
+         <!--  Alphabetical order  -->
+      <div id="divSort">
+
+        <div class="row">
+            <div class="card-title">Alphabetical Sort</div><hr>
+            <div class="col-6">
+              <label for="" id=""> Enter List</label>
+              <textarea name="input" id="input" cols="30" class="form-control" rows="10"></textarea> <br>
+              <input type="button" value="Convert" class='btn btn-success mb-2' onclick="sortString();">
+            </div>
+                  
+            <div class="col-6">
+              <label id=""> Result</label>
+              <textarea name="result" id="result" class="form-control" cols="30" rows="10" readonly></textarea><br>
+              <input type="button" value='Copy Sort list' class="btn btn-success mb-2 " id="copySortList" >
+              <input type="button" value='Refresh' class="btn btn-primary mb-2 "  onclick="RefreshSort();" >
+            </div>
+         </div>
+
+
+      </div>
+
+
+         <!-- url list maker -->
+         <div id="divURL">
+
+            <div class="row">
+                <div class="card-title">URL Maker</div><hr>
+                <div class="col-5">
+                  <label for="" id=""> Enter Link</label>
+                  <textarea name="txturlValue" id="txturlvalue" cols="30" class="form-control" rows="3"></textarea> <br>
+
+                
+                    <input type="checkbox" id="chktBlank" name="chktBlank">
+                  <label for="chktBlank">Check for target='_blank'</label><br>
+                  <br>
+
+                  <input type="button" value="Convert" class='btn btn-success mb-2' onclick="Generateurl();">
+                  <input type="button" value='Refresh' class="btn btn-primary mb-2 "  onclick="RefreshURL();" >
+                </div>
+                      
+                <div class="col-5">
+                  <label id="">Enter Anchor Tag Value</label>
+                  <textarea name="txtAvalue" id="txtAvalue" class="form-control" cols="30" rows="3" ></textarea><br>
+                  
+                </div>
+      
+            </div>   
+            <div class="row">
+                
+              <div class="col-10">
+                <div class="d-flex justify-content-between mt-2">
+                <label id=""> Result</label>
+                <input type="button" value='Copy URL' class="btn btn-success mb-2 " id="copyURL" >
+               
+                </div>
+                <textarea name="txturlResult" id="txturlResult" class="form-control" cols="30" rows="3" readonly></textarea><br>
+                
+              </div>
+      
+          </div>  
+
+        </div>
+    
+        
+        <!-- options List maker -->
+        <div id="divOptmkr">
+
+            <div class="row" >
+                <div class="card-title">Option Tag Maker</div><hr>
+                <div class="col-5">
+                    <label for="" id=""> Enter Option Tag Value</label>
+                    <textarea name="txtValue" id="txtvalue" cols="30" class="form-control" rows="10"></textarea>
+                </div>
+
+                <div class="col-5">
+                    <label for="" id=""> Enter Option Tags</label>
+                    <textarea name="txtoptiontags" id="txtoptiontags" class="form-control" cols="30" rows="10"></textarea>
+                </div>
+            </div>    
+
+            <br>
+            <input type="button" value="Convert" class='btn btn-success mb-2' onclick="GenerateOpt();">
+            <input type="button" value='Refresh' class="btn btn-primary mb-2 "  onclick="OptRefresh();" >
+
+            <div class="row">
+                <div class="col-10">
+                    <div class="d-flex justify-content-between mt-2">
+                        <label id=""> Result</label>
+                        <input type="button" value='Copy Option Tags' class="btn btn-success mb-2" id="copyButton" >
+                    </div>
+                    <textarea name="txtoptiontagsfinal" id="txtoptiontagsfinal" class="form-control" cols="30" rows="10" readonly></textarea>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Character Converter -->
+
+        <div id="divCharConverter">
+
+            <div class="row" >
+                <div class="card-title">Character Convert</div><hr>
+                <div class="col-10">
+                    <label for="" id=""> Enter your text</label>
+                    <textarea name="txtCharConverter" id="txtCharConverter"  class="form-control" cols="30" rows="10"></textarea>
+                 </div>
+            </div>    
+
+            <br>
+            <input type="button" value="Convert" class='btn btn-success mb-2' onclick="GenerateCC();">
+            <input type="button" value='Refresh' class="btn btn-primary mb-2 "  onclick="CCRefresh();" >
+
+            <div class="row">
+                <div class="col-10">
+                    <div class="d-flex justify-content-between mt-2">
+                        <label id=""> Result</label>
+                        <input type="button" value='Copy Text' class="btn btn-success mb-2" id="copyCCButton" >
+                    </div><s></s>
+                    <textarea name="txtCCResult" id="txtCCResult" class="form-control" cols="30" rows="10" readonly></textarea>
+                </div>
+            </div>
+      
+      </div>
+
+
+     
+
+        <!-- end -->
+      
+    </div>
+
+</div>
+
+</body>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+<script  type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<script>
+
+$( document ).ready(function() {
+    $("#divCharConverter").show();
+    $("#divListmkr").hide();
+    $("#divolListmkr").hide();
+    $("#divolListmkr").hide();
+    $("#divOptmkr").hide();
+    $("#divURL").hide();
+    $("#divSort").hide();
+
+   
+});
+
+
+$("#btnlist").click(function(){
+    $("#divOptmkr").hide();
+    $("#divolListmkr").hide();
+    $("#divURL").hide();
+    $("#divCharConverter").hide();
+    $("#divSort").hide();
+    $("#divListmkr").show();
+})
+
+$("#btnOpt").click(function(){
+    $("#divListmkr").hide();
+    $("#divolListmkr").hide();
+    $("#divURL").hide();
+    $("#divCharConverter").hide();
+    $("#divSort").hide();
+    $("#divOptmkr").show();
+});
+
+$("#btnollist").click(function(){
+    $("#divListmkr").hide();
+    $("#divOptmkr").hide();
+    $("#divURL").hide();
+    $("#divCharConverter").hide();
+    $("#divSort").hide();
+    $("#divolListmkr").show();
+});
+$("#btnURL").click(function(){
+    $("#divListmkr").hide();
+    $("#divOptmkr").hide();
+    $("#divolListmkr").hide();
+    $("#divCharConverter").hide();
+    $("#divSort").hide();
+    $("#divURL").show();
+});
+$("#btnConverter").click(function(){
+    $("#divListmkr").hide();
+    $("#divOptmkr").hide();
+    $("#divolListmkr").hide();
+    $("#divURL").hide();
+    $("#divSort").hide();
+    $("#divCharConverter").show();
+});
+$("#btnsort").click(function(){
+    $("#divListmkr").hide();
+    $("#divOptmkr").hide();
+    $("#divolListmkr").hide();
+    $("#divURL").hide();
+    $("#divCharConverter").hide();
+    $("#divSort").show();
+});
+
+function convertToEntities(Text) {
+      
+      // encodeInput = $("#txtoptiontags").val();
+      var inputTxt = Text;
+      var convertedTxt = '';
+      for (i = 0; i < inputTxt.length; i++) {
+          if (inputTxt.charCodeAt(i) > 127) {
+              convertedTxt += '&#' + inputTxt.charCodeAt(i) + ';';
+          }
+          else {
+              convertedTxt += inputTxt.charAt(i);
+          }
+      }
+      return convertedTxt;
+                 
+  }
+
+
+/// ul list maker
+$('#copyButton1').click(function() {
+
+    const textarea = $('#txtResult')[0]; 
+    textarea.select(); 
+    document.execCommand('copy'); 
+    textarea.setSelectionRange(0, 0); 
+
+});
+
+function Refresh()
+{
+    $("#txtEnterList").val("");
+    $("#txtResult").val("");
+  
+    $("#txtEnterList").focus();
+
+}
+
+function GenerateList()
+{
+
+  const textareaValue = $('#txtEnterList').val();
+  const RstArray = textareaValue.split('\n');
+  var str = "";
+  if(textareaValue!=""){
+  if(RstArray!=""){
+  str+=`<ul>\n`;
+  
+  for (let i = 0; i < RstArray.length; i++) {
+    const value = convertToEntities(RstArray[i]);
+        if(value!=""){
+           str+=`<li>${value}</li>\n`;
+        }
+  }
+
+  str+=`</ul>`;
+} 
+  $("#txtResult").val(str);
+
+}
+
+else
+{
+alertify.error("Please enter UL list");
+}
+
+
+}
+
+/// ol list maker
+
+$('#copyolButton').click(function() {
+
+const textarea = $('#txtolResult')[0]; 
+textarea.select(); 
+document.execCommand('copy'); 
+textarea.setSelectionRange(0, 0); 
+
+});
+
+function RefresholList()
+{
+$("#txtEnterolList").val("");
+$("#txtolResult").val("");
+
+$("#txtEnterolList").focus();
+
+}
+
+function GenerateolList()
+{
+
+const textareaValue = $('#txtEnterolList').val();
+const olRstArray = textareaValue.split('\n');
+var str = "";
+if(textareaValue!=""){
+if(olRstArray!=""){
+str+=`<ol>\n`;
+
+for (let i = 0; i < olRstArray.length; i++) {
+const value = convertToEntities(olRstArray[i]);
+    if(value!=""){
+        
+        str+=`<li>${value}</li>\n`;
+       
+    }
+}
+
+str+=`</ol>`;
+} 
+$("#txtolResult").val(str);
+
+}else
+{
+alertify.error("Please enter OL list");
+}
+
+}
+/// URL maker
+
+
+function Generateurl()
+{
+
+  const textareaurlValue = $('#txturlvalue').val();
+  const textareaurlValue1 = $('#txtAvalue').val();
+  const UrlArray = textareaurlValue.split('\n');
+  const UrlAArray = textareaurlValue1.split('\n');
+  var checkBox = document.getElementById("chktBlank");
+  var str = "";
+
+  if(textareaurlValue!=""){
+ 
+  for (let i = 0; i < UrlArray.length; i++) {
+    const value = UrlArray[i]
+    const Avalue = convertToEntities(UrlAArray[i]);
+
+    if(checkBox.checked == true){
+        if(value!=""){
+          
+         
+          str+=`<a href='${value}' target='_blank'>${Avalue}</a>`;
+        }
+        }else if(value!=""){
+            str+=`<a href='${value}'>${Avalue}</a>`;
+        }
+      
+
+  } 
+ 
+  $("#txturlResult").val(str);
+
+}else
+{
+alertify.error("Please enter URL");
+}
+
+
+}
+
+$('#copyURL').click(function() {
+
+    const textarea = $('#txturlResult')[0]; // Get the DOM element from jQuery object
+    textarea.select(); // Select the text inside the textarea
+    document.execCommand('copy'); // Copy the selected text to the clipboard
+    textarea.setSelectionRange(0, 0); // Deselect the text
+
+});
+
+function RefreshURL()
+{
+    $("#txturlvalue").val("");
+    $("#txturlResult").val("");
+    $("#txtAvalue").val("");
+  
+    $("#txturlvalue").focus();
+
+}
+
+//option-maker
+function GenerateOpt(){
+
+const textareaValue = $('#txtvalue').val();
+var convertedTxt = $("#txtoptiontags").val();
+
+const valuesArray = textareaValue.split('\n');
+const convertedTxtt = convertedTxt.split('\n');
+
+var str = "";
+if(textareaValue!="" && convertedTxt!=""){
+
+for (let i = 0; i < valuesArray.length; i++) {
+const value = valuesArray[i].split('&').join('and').split('+').join(' plus');    // Remove leading/trailing whitespace
+const MainText = convertToEntities(convertedTxtt[i]); // Remove leading/trailing whitespace
+if(value!="" && MainText!=""){
+str+=`<option value='${value}'>${MainText}</option>\n`;
+}
+        
+}
+
+$("#txtoptiontagsfinal").val(str);
+
+}else
+{
+alertify.error("Please enter the list");
+}
+
+}
+
+
+
+
+
+
+  $('#copyButton').click(function() {
+const textarea = $('#txtoptiontagsfinal')[0]; // Get the DOM element from jQuery object
+textarea.select(); // Select the text inside the textarea
+document.execCommand('copy'); // Copy the selected text to the clipboard
+textarea.setSelectionRange(0, 0); // Deselect the text
+//   alertify.success('Text copied to clipboard.');
+});
+
+function OptRefresh()
+{
+    $("#txtvalue").val("");
+    $("#txtoptiontags").val("");
+    $("#txtoptiontagsfinal").val("");
+  
+    $("#txtvalue").focus();
+
+}
+
+/////// Character Converter
+
+
+function GenerateCC(){
+
+const textareaValue = $('#txtCharConverter').val();
+const MainText = convertToEntities(textareaValue);
+    var str = "";
+    if(MainText!=""){
+        str+=`${MainText}\n`;
+        }else
+        {
+        alertify.error("Please enter the text");
+        }
+    $("#txtCCResult").val(str);
+
+}
+
+function CCRefresh()
+{
+$("#txtCharConverter").val("");
+$("#txtCCResult").val("");
+
+$("#txturlvalue").focus();
+
+}
+
+$('#copyCCButton').click(function() {
+const textarea = $('#txtCCResult')[0]; // Get the DOM element from jQuery object
+textarea.select(); // Select the text inside the textarea
+document.execCommand('copy'); // Copy the selected text to the clipboard
+textarea.setSelectionRange(0, 0); // Deselect the text
+//   alertify.success('Text copied to clipboard.');
+});
+
+
+
+
+////// Alphabetical order
+
+function sortString() {
+  const inputElement = document.getElementById('input');
+  const inputElement1 = document.getElementById('result');
+
+  var sortResult=""
+  if(inputElement.value!=""){
+sortResult = inputElement.value.split('\n').sort().join('\n');
+
+   
+  }else
+{
+alertify.error("Please enter the text");
+}
+ 
+  inputElement1.value = sortResult.trim();
+  
+}
+
+function RefreshSort()
+{
+    $("#input").val("");
+    $("#result").val("");
+    $("#input").focus();
+
+}
+
+$('#copySortList').click(function() {
+
+const textarea = $('#result')[0]; // Get the DOM element from jQuery object
+textarea.select(); // Select the text inside the textarea
+document.execCommand('copy'); // Copy the selected text to the clipboard
+textarea.setSelectionRange(0, 0); // Deselect the text
+
+});
+
+
+
+
+///////////////////Multiple Checkbox
+
+
+function GenerateChk(){
+
+  const textareaValue = $('#txtchkValue').val();
+  var convertedTxt1 = $("#txtPvalue").val();
+  var chkButtonId = $("#txtchkButtonId").val();
+  var chkId = $("#txtchkId").val();
+  var dataValue = $("#txtdataValue").val();
+  var convertedTxt =convertToEntities(convertedTxt1);
+
+
+  const valuesArray = textareaValue.split('\n');
+  var str = "";
+  var str = "";
+  var jsc = "";
+  var MainText = "";
+
+
+  str+=` <section style="">\n`;
+    if(convertedTxt!=""){
+        str+=`<p style='margin-bottom: 15px;'>${convertedTxt}<span class='hs-form-required' data-reactid=''.hbspt-forms-0.1:$2.0.1'>*</span></p> \n`;
+
+    }
+
+  if(textareaValue!="" && chkButtonId!="" && chkId!="" && dataValue!=""){
+    
+    jsc +=`$('#${chkButtonId}').on('click', function () { \n if (`;
+
+    for (let i = 0; i < valuesArray.length; i++) {
+      MainText++;
+      
+      const value = convertToEntities(valuesArray[i]);   
+
+      if(value!=""){
+        str+=`<label style='display: block;margin-left: 18px; padding-bottom: 5px; font-size: 15px !important;line-height: 1.5;'>
+        <input type='checkbox' value='${value}' name='data[${dataValue}]' id='${chkId}${MainText}' style='width: 15px !important; height: auto !important; margin:0 0 3px -18px !important;'>
+        ${value}
+        </label>\n`;
+
+       
+       
+        jsc +=`${chkId}${MainText}.checked `;
+       
+       
+       if(MainText < valuesArray.length){
+        jsc +=`|| `;
+      
+       }
+      }
+      dataValue++;      
+    }
+
+
+  
+
+    
+    jsc +=`) {
+           document.getElementById('${chkId}1').required = false;
+       } else {
+           document.getElementById('${chkId}1').required = true;
+       }
+   });`;
+
+    str+=` </section>\n`;
+    $("#txtCopyHTMLCode").val(str);
+    $("#txtJSCode").val(jsc);
+
+  }else
+  {
+  alertify.error("Please Fill All Values");
+  }
+
+}
+
+
+
+
+  $('#HTMLCode').click(function() {
+const textarea = $('#txtCopyHTMLCode')[0]; // Get the DOM element from jQuery object
+textarea.select(); // Select the text inside the textarea
+document.execCommand('copy'); // Copy the selected text to the clipboard
+textarea.setSelectionRange(0, 0); // Deselect the text
+//   alertify.success('Text copied to clipboard.');
+});
+
+
+
+$('#JSCode').click(function() {
+const textarea = $('#txtJSCode')[0]; // Get the DOM element from jQuery object
+textarea.select(); // Select the text inside the textarea
+document.execCommand('copy'); // Copy the selected text to the clipboard
+textarea.setSelectionRange(0, 0); // Deselect the text
+//   alertify.success('Text copied to clipboard.');
+});
+
+
+function ChkRefresh()
+{
+    $("#txtchkValue").val("");
+    $("#txtPvalue").val("");
+    $("#txtchkButtonId").val("");
+    $("#txtchkId").val("");
+    $("#txtCopyHTMLCode").val("");
+    $("#txtdataValue").val("");
+    $("#txtJSCode").val("");
+  
+    $("#txtchkValue").focus();
+
+}
+
+</script>
+</html>
+
+
+
+
+
+
+
+
